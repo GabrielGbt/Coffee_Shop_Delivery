@@ -9,7 +9,7 @@ import { meusCoffees } from "./myJson";
 export interface Product {
     id: number;
     name: string;
-    price: string;
+    price: number;
     image: string;
     description: string;
     //for cart   

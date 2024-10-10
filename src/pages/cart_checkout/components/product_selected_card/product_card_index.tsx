@@ -6,7 +6,7 @@ import { Minus, Plus, Trash } from "@phosphor-icons/react";
 import { Product } from "../../../../contexts/state/coffees";
 
 export function CoffeeCardSelected(value: Product) {
-    const [ quantityValue , setQuantityValue ] = useState(0);
+    const [ quantityValue , setQuantityValue ] = useState(value.quantity);
     
 
     function lessQuantity() {
@@ -40,12 +40,12 @@ export function CoffeeCardSelected(value: Product) {
                             <button onClick={(moreQuantity)}> <Plus size={20} /> </button>
                         </div>
                         <div id="DeleteButtonContainer">
-                            <button > <Trash size={24} /></button>
+                            <button> <Trash size={24} /></button>
                         </div>
                     </div>
                 </div>
                 <span id="price">
-                    R$ 9.90
+                    R${value.price}
                 </span>
             </div>
         </CardContainer>

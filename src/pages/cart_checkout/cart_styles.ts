@@ -124,6 +124,77 @@ export const AdressAndPayment = styled.div`
 
 `
 
+export const PaymentContainer = styled.div`
+
+    margin-top: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: ${props => props.theme['base-card']};
+    border-radius: 8px;
+    gap: 30px;
+
+    .TitlePayment {
+        display: flex;
+        gap: 10px;
+        justify-content: start;
+
+        #iconMoney {
+            color: ${props => props.theme['purple']};
+        }
+
+        h1 {
+            font-family: 'arial';
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        p {
+            font-family: 'arial';
+            font-weight: 200;
+            font-size: medium;
+        }
+    }
+
+    .ButtonsPayment {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 30px;
+
+        button {
+            display: flex;
+            flex: 1;
+            height: 60px;
+            background-color: ${props => props.theme['base-button']};
+            border: none;
+            border-radius: 5px;
+            gap: 20px;
+            align-items: center;
+            text-align: start;
+            flex-direction: row;
+            padding: 30px;
+
+            p {
+                font-family: 'Arial';
+                font-weight: 300;
+                font-size: 20px;
+                text-align: center;
+            }
+
+            &:hover {
+                background-color: ${props => props.theme['yellow']};
+                color: white;
+            }
+        }
+    }
+`
+
+
+
+
 export const CheckoutSidebar = styled.div`
     
     @media (max-width: 1700px) {
@@ -157,15 +228,54 @@ export const CheckoutSidebar = styled.div`
 
     .SidebarContainer {
         width: 100%;
-        height: 25rem;
+        height: 100%;
         background-color: ${props => props.theme['base-card']};
         border-top-right-radius: 35px;
         border-bottom-left-radius: 35px;
 
-        .SidebarItemsContainer {
-            //background-color: pink;
-            
+        .SidebarItemsContainer {}
+    }
+
+    .ConfirmOrderContainer {
+        
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+
+        .AllPrices {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            //background-color: black;
+            p {
+                font-family: 'Arial';
+                font-size: 15px;
+                font-weight: 500;
+            }
+
+            #priceValues {
+                text-align: end;
+            }
         }
+
+        button {
+            width: 100%;
+            height: 2.5rem;
+            color: white;
+            background-color: ${props => props.theme['yellow']};
+            border: none;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: ${props => props.theme['yellow-dark']};
+            }
+        }
+
     }
 `
 

@@ -1,12 +1,27 @@
-import { MapPinLine } from "@phosphor-icons/react";
-import { AdressAndPayment, CartCheckoutContainer, CheckoutSidebar } from "./cart_styles";
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "@phosphor-icons/react";
+import { AdressAndPayment, CartCheckoutContainer, CheckoutSidebar, PaymentContainer } from "./cart_styles";
 import { CoffeeCardSelected } from "./components/product_selected_card/product_card_index";
 import { DataStateContext } from "../../contexts/state/coffees";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 
 export function CartPage() {
     const { cartParam } = useContext(DataStateContext)
+
+    const [ priceTotalItems, setPriceTotalItems ] = useState(0);
+    const [ deliveryFee, setDeliveryFee ] = useState(0);
+    const [ totalPrice, setTotalPrice ] = useState(0);
+
+    useEffect(() => {
+        const priceValues: number[] = cartParam.map((e) => e.price)
+        const total: number = priceValues.reduce((acc, current) => acc + current, 0);
+        setPriceTotalItems(total);
+
+        setDeliveryFee(3.07);
+
+        const totalValue: number = deliveryFee + priceTotalItems;
+        setTotalPrice(totalValue);
+    }, [cartParam, deliveryFee, priceTotalItems])
 
     return (
         <>
@@ -41,6 +56,21 @@ export function CartPage() {
                     </div>
                 
                 </div>
+
+                <PaymentContainer>
+                    <div className="TitlePayment">
+                        <CurrencyDollar id="iconMoney" size={24}/>
+                        <div>
+                            <h1>Pagamento</h1>
+                            <p>Escolha uma das opções de pagamento</p>
+                        </div>
+                    </div>
+                    <div className="ButtonsPayment">
+                        <button><CreditCard size={24}/> CARTÃO DE CRÉDITO</button>
+                        <button><Bank size={24}/> CARTÃO DE DÉBITO</button>
+                        <button><Money size={24}/>DINHEIRO</button>
+                    </div>
+                </PaymentContainer>
             </AdressAndPayment>
 
             <CheckoutSidebar>
@@ -55,6 +85,23 @@ export function CartPage() {
                         }) : <div>Você não tem produtos</div>
                     }
                     </div>
+                    { // FIZ UM TERNÁRIO BEM AQUIII AAAAAAAAAAAA
+                        cartParam ? <div className="ConfirmOrderContainer">
+                        <div className="AllPrices">
+                            <div>
+                                <p>Total de itens</p>
+                                <p>Entrega</p>
+                                <h1>Total</h1>
+                            </div>
+                            <div id="priceValues">
+                                <p>R$ {priceTotalItems}</p>
+                                <p>R$ {deliveryFee}</p>
+                                <h1>R$ {totalPrice}</h1>
+                            </div>
+                        </div>
+                        <button >Confirmar Pedido</button>
+                    </div> : <div>Parece que você não tem nenhum item por aqui! Volte e escolhe ao seu desejo!</div>
+                    }
                 </div>
             </CheckoutSidebar>
         </CartCheckoutContainer>

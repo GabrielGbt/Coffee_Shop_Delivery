@@ -49,9 +49,9 @@ export const CardContainer = styled.div`
     align-items: center;
     gap: 20px;
     padding: 15px 0 30px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
 
     .Main {
         width: 100%;
@@ -61,8 +61,8 @@ export const CardContainer = styled.div`
     }
 
     img {
-        width: 30%;
-        height: 30%;
+        width: 20%;
+        height: 20%;
     }
 
     .Description {
@@ -130,7 +130,9 @@ export const CardContainer = styled.div`
     }
 
     #price {
-        font-family: 'Arial';
+        display: flex;
+        flex-direction: row;
+        font-family: 'baloo 2';
         font-size: medium;
         font-weight: bold;
     }
